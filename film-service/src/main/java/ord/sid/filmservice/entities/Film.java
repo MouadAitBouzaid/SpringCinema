@@ -16,6 +16,7 @@ public class Film {
     private String realisateur;
     private Date dateSortie;
     private double duree;
+    private String testBUild;
     private String photo;
     @ManyToOne
     private Categorie categorie;
