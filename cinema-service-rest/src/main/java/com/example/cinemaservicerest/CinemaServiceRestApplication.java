@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Bean;
 public class CinemaServiceRestApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(CinemaServiceRestApplication.class, args);
     }
     @Bean
