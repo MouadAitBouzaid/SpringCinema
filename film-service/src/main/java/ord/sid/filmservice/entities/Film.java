@@ -4,10 +4,11 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.Date;
 @Entity
-@Data @NoArgsConstructor @AllArgsConstructor
+@Data @AllArgsConstructor @NoArgsConstructor @ToString
 public class Film {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,6 +19,7 @@ public class Film {
     private double duree;
     private String testBUild;
     private String photo;
-    @ManyToOne
+    /*@ManyToOne
     private Categorie categorie;
+     */
 }
