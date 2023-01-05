@@ -1,0 +1,53 @@
+version: "3"
+
+services:
+
+  eureka:
+    container_name: eureka
+    image: satango/eureka-service
+    ports:
+      - "8761:8761"
+    networks:
+      - my-network
+
+  cinema:
+    container_name: cinema
+    image: satango/cinema-service
+    ports:
+      - "8082:8082"
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8761/
+    depends_on:
+      - eureka
+    networks:
+      - my-network
+
+  gateway:
+    container_name: gateway
+    image: satango/gateway
+    ports:
+      - "8888:8888"
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8761/
+    depends_on:
+      - eureka
+    networks:
+      - my-network
+
+  film:
+    container_name: film
+    image: satango/film-service
+    ports:
+      - "8085:8085"
+    environment:
+      - JAVA_OPTS=
+        -DEUREKA_SERVER=http://eureka:8761/
+    depends_on:
+      - eureka
+    networks:
+      - my-network
+
+networks:
+  my-network:
